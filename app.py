@@ -27,7 +27,7 @@ def save_todo():
     todo_name = request.form.get('todo_name')
     if todo_name is None or todo_name == "":
         return jsonify(success=False,message="Todo name cannot be empty."), 400
-    
+
     todos.append({"id": len(todos),
                   "todo_name": todo_name})
     return jsonify(success=True,

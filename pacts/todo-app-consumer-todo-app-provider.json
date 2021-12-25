@@ -1,0 +1,57 @@
+{
+  "consumer": {
+    "name": "todo-app-consumer"
+  },
+  "provider": {
+    "name": "todo-app-provider"
+  },
+  "interactions": [
+    {
+      "description": "a request to create a new todo",
+      "request": {
+        "method": "POST",
+        "path": "/todos",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "body": "todo_name=1"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "message": "Todo 1 named is saved.",
+          "success": true
+        }
+      }
+    },
+    {
+      "description": "a request to create a new todo with empty name",
+      "request": {
+        "method": "POST",
+        "path": "/todos",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "body": "todo_name="
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "message": "Todo name cannot be empty.",
+          "success": false
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
