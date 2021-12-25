@@ -25,11 +25,13 @@ def get_todos():
 def save_todo():
     global todos
     todo_name = request.form.get('todo_name')
+    if todo_name is None or todo_name == "":
+        return jsonify(success=False,message="Todo name cannot be empty."), 400
+    
     todos.append({"id": len(todos),
                   "todo_name": todo_name})
     return jsonify(success=True,
-                   message="Todo "+todo_name+" named is saved.",
-                   statusCode=200)
+                   message="Todo "+todo_name+" named is saved."), 201
 
 
 if __name__ == '__main__':
