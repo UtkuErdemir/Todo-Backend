@@ -1,1 +1,1 @@
-web: gunicorn todo-app-backend:app
+web: gunicorn --bind 0.0.0.0:$PORT ue-todo-app-backend:app
