@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+venv
+__pycache__
+.idea
+log
+.gitignore
+.pytest_cache
+
+    
