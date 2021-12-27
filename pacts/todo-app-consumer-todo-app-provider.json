@@ -47,6 +47,36 @@
           "success": false
         }
       }
+    },
+    {
+      "description": "a request all todos",
+      "request": {
+        "method": "GET",
+        "path": "/todos"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "data": [
+            {
+              "id": 0,
+              "todo_name": "Sample Todo"
+            }
+          ],
+          "success": true
+        },
+        "matchingRules": {
+          "$.body.data": {
+            "min": 1
+          },
+          "$.body.data[*].*": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {

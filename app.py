@@ -6,7 +6,13 @@ app = Flask(__name__)
 CORS(app)
 
 
-todos = []
+todos = [{"id": 0, "todo_name": "Sample Todo"}]
+
+
+@app.after_request
+def apply_caching(response):
+    response.headers["Content-Type"] = "application/json"
+    return response
 
 
 @app.route('/')
@@ -27,11 +33,12 @@ def save_todo():
     todo_name = request.form.get('todo_name')
     if todo_name is None or todo_name == "":
         return jsonify(success=False,message="Todo name cannot be empty."), 400
-
-    todos.append({"id": len(todos),
+    todo_id = len(todos)
+    todos.append({"id": todo_id,
                   "todo_name": todo_name})
     return jsonify(success=True,
-                   message="Todo "+todo_name+" named is saved."), 201
+                   message="Todo "+todo_name+" named is saved.",
+                   todo_id=todo_id), 201
 
 
 if __name__ == '__main__':
