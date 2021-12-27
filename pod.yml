@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: todo-app-backend
+  labels:
+    name: todo-app-backend
+spec:
+  containers:
+  - name: todo-app-backend
+    image: todo-app:backend
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "750m"
+    ports:
+      - containerPort: 3000
