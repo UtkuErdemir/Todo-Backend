@@ -37,8 +37,7 @@ def save_todo():
     todos.append({"id": todo_id,
                   "todo_name": todo_name})
     return jsonify(success=True,
-                   message="Todo "+todo_name+" named is saved.",
-                   todo_id=todo_id), 201
+                   message="Todo "+todo_name+" named is saved."), 201
 
 
 if __name__ == '__main__':
