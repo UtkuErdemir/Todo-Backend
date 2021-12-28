@@ -1,4 +1,4 @@
-from pact import Verifier
+from pact.verifier import Verifier
 
 
 def test_todo_service_provider_against_pact():
